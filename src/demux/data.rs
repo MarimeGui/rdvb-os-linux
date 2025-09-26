@@ -52,11 +52,21 @@ pub enum DmxTsPes {
 }
 
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Default)]
 pub struct DmxFilter {
     pub filter: [u8; DMX_FILTER_SIZE],
     pub mask: [u8; DMX_FILTER_SIZE],
     pub mode: [u8; DMX_FILTER_SIZE],
+}
+
+impl DmxFilter {
+    /// Creates a filter that only lets through packets with specified first byte.
+    ///
+    /// This is useful for receiving SI table packets.
+    pub fn first_byte_mask(&mut self, first_byte: u8) {
+        self.filter[0] = first_byte;
+        self.mask[0] = 0xFF;
+    }
 }
 
 /// (taken from [official docs](https://www.linuxtv.org/downloads/v4l-dvb-apis-new/userspace-api/dvb/dmx_types.html#c.dmx_sct_filter_params))
