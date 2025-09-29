@@ -1,3 +1,5 @@
+use std::ffi::c_int;
+
 use nix::errno::Errno;
 use thiserror::Error;
 
@@ -50,4 +52,12 @@ pub enum PropertyError {
     GetProperty(Errno),
     #[error("problem while writing one or more properties")]
     SetProperty(Errno),
+}
+
+#[derive(Error, Debug)]
+pub enum DtvError {
+    #[error("tried to receive information from a query that wasn't ran")]
+    NotRan,
+    #[error("kernel application returned an error")]
+    Reported(c_int),
 }
