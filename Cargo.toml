@@ -1,5 +1,12 @@
 [package]
 name = "rdvb-os-linux"
+description = "Linux-specific things for DVB"
+repository = "https://github.com/MarimeGui/rdvb-os-linux"
+authors = ["MarimeGui <lepro.guillaume@gmail.com>"]
+keywords = ["dvb"]
+categories = ["os::linux-apis", "multimedia"]
+readme = "README.md"
+license = "Unlicense"
 version = "0.1.0"
 edition = "2024"
 
