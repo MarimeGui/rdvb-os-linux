@@ -1,4 +1,5 @@
 pub mod demux;
+pub mod devices;
 pub mod error;
 pub mod frontend;
 
